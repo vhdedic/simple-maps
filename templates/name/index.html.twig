@@ -19,17 +19,19 @@
                 <td class="text-end">-</td>
                 <td class="text-end">-</td>
                 <td class="text-end">
-                    <a href="" class="btn btn-sm btn-outline-dark">Create</a>
+                    <a href="{{ path('app_name_create') }}" class="btn btn-sm btn-outline-dark">Create</a>
                 </td>
             </tr>
             {% for name in names %}
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr class="align-middle">
+                <td>{{ name.name }}</td>
+                <td class="text-end">{{ name.longitude }}</td>
+                <td class="text-end">{{ name.latitude }}</td>
+                <td class="text-end">
+                    <a href="#" class="btn btn-sm btn-outline-dark">Edit</a> 
+                </td>
             </tr>
             {% endfor %}
         </tbody>
-    </table
+    </table>
 {% endblock %}

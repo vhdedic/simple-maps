@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Name{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">Create Name</h1>
+    <div class="border p-3 bg-light">
+        {{ form_start(form) }}
+            {{ form_rest(form) }}
+            
+            <button type="submit" class="btn btn-success" formnovalidate>Save</button>
+            <a class="btn btn-secondary" href="{{ path('app_name_index') }}">Cancel</a>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
