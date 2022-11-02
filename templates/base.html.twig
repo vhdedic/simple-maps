@@ -17,14 +17,19 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Simple Maps</a>
+            <ul class="nav navbar-nav ms-auto">
+                <li>
+                    <a class="nav-link text-right" href="{{ path('app_name_index') }}">
+                        Names
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link text-right" href="{{ path('app_map_index') }}">
+                        Maps
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="nav navbar-nav ms-auto">
-            <li>
-                <a class="nav-link text-right" href="{{ path('app_name_index') }}">
-                    Names
-                </a>
-            </li>
-        </ul>
     </nav>
     <div class="container">
         {% block body %}{% endblock %}
