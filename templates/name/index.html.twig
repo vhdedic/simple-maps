@@ -4,5 +4,32 @@
 
 {% block body %}
     <h1 class="my-4">Names</h1>
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Longitude</th>
+                <th class="text-center">Latitude</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="align-middle">
+                <td>New Name</td>
+                <td class="text-end">-</td>
+                <td class="text-end">-</td>
+                <td class="text-end">
+                    <a href="" class="btn btn-sm btn-outline-dark">Create</a>
+                </td>
+            </tr>
+            {% for name in names %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table
 {% endblock %}
