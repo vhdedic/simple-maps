@@ -52,4 +52,28 @@ class NameController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/name/{id}/edit', name: 'app_name_edit')]
+    public function edit($id, Request $request): Response
+    {
+        $name = $this->nameRepository->find($id);
+
+        $form = $this->createForm(NameFormType::class, $name);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted()) {
+            $name->setName($form->get('name')->getData());
+            $name->setLongitude($form->get('longitude')->getData());
+            $name->setLatitude($form->get('latitude')->getData());
+
+            $this->em->persist($name);
+            $this->em->flush();
+
+            return $this->redirectToRoute('app_name_index');
+        }
+
+        return $this->render('name/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }
