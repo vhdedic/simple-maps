@@ -50,4 +50,27 @@ class MapController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/map/{id}/edit', name: 'app_map_edit')]
+    public function edit($id, Request $request): Response
+    {
+        $map = $this->mapRepository->find($id);
+
+        $form = $this->createForm(MapFormType::class, $map);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $map->setName($form->get('name')->getData());
+
+            $this->em->persist($map);
+            $this->em->flush();
+
+            return $this->redirectToRoute('app_map_index');
+        }
+
+        return $this->render('map/edit.html.twig', [
+            'form' => $form->createView(),
+            'map' => $map,
+        ]);
+    }
 }
