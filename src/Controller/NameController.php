@@ -37,7 +37,7 @@ class NameController extends AbstractController
         $form = $this->createForm(NameFormType::class, $name);
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
+        if ($form->isSubmitted()) {
             $name->setName($form->get('name')->getData());
             $name->setLongitude($form->get('longitude')->getData());
             $name->setLatitude($form->get('latitude')->getData());
@@ -61,7 +61,7 @@ class NameController extends AbstractController
         $form = $this->createForm(NameFormType::class, $name);
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
+        if ($form->isSubmitted()) {
             $name->setName($form->get('name')->getData());
             $name->setLongitude($form->get('longitude')->getData());
             $name->setLatitude($form->get('latitude')->getData());
@@ -73,7 +73,8 @@ class NameController extends AbstractController
         }
 
         return $this->render('name/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'name' => $name,
         ]);
     }
 }

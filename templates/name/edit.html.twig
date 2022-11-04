@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ...{% endblock %}
+{% block title %}Edit {{ name.name }}{% endblock %}
 
 {% block body %}
-    <h1 class="my-4">Edit ...</h1>
+    <h1 class="my-4">Edit {{ name.name }}</h1>
     <div class="border p-3 bg-light">
         {{ form_start(form) }}
             {{ form_rest(form) }}
