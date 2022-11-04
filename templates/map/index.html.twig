@@ -4,4 +4,28 @@
 
 {% block body %}
     <h1 class="my-4">Maps</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">Map</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr class="align-middle">
+                <td>New Map</td>
+                <td class="text-end">
+                    <a href="{{ path('app_map_create') }}" class="text-decoration-none">Create</a>
+                </td>
+            </tr>
+            {% for map in maps | sort((a, b) => a.name <=> b.name) %}
+            <tr class="align-middle">
+                <td>{{ map.name }}</td>
+                <td class="text-end">
+                    {# <a href="{{ path('app_map_edit', {'id': map.id}) }}" class="text-decoration-none">Edit</a> #} 
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
