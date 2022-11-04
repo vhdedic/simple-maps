@@ -14,12 +14,8 @@ class NameFormType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('longitude', NumberType::class, [
-                'scale' => 5,
-            ])
-            ->add('latitude', NumberType::class, [
-                'scale' => 5,
-            ])
+            ->add('longitude')
+            ->add('latitude')
         ;
     }
 

@@ -17,10 +17,10 @@ class Name
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?float $longitude = null;
+    private ?string $longitude = null;
 
     #[ORM\Column]
-    private ?float $latitude = null;
+    private ?string $latitude = null;
 
     public function getId(): ?int
     {
@@ -39,24 +39,24 @@ class Name
         return $this;
     }
 
-    public function getLongitude(): ?float
+    public function getLongitude(): ?string
     {
         return $this->longitude;
     }
 
-    public function setLongitude(float $longitude): self
+    public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
 
         return $this;
     }
 
-    public function getLatitude(): ?float
+    public function getLatitude(): ?string
     {
         return $this->latitude;
     }
 
-    public function setLatitude(float $latitude): self
+    public function setLatitude(string $latitude): self
     {
         $this->latitude = $latitude;
 
