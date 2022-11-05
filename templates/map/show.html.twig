@@ -18,6 +18,12 @@
                     <a href="{{ path('app_name_map_add', {'id': map.id}) }}" class="text-decoration-none">Add</a>
                 </td>
             </tr>
+            {% for name_map in name_maps %}
+            <tr class="align-middle">
+                <td>{{ name_map.name }}</td>
+                <td>-</td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

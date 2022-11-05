@@ -83,9 +83,12 @@ class MapController extends AbstractController
     public function show($id): Response
     {
         $map = $this->mapRepository->find($id);
-        
+
+        $name_maps = $map->getNameMap();
+
         return $this->render('map/show.html.twig', [
             'map' => $map,
+            'name_maps' => $name_maps,
         ]);
     }
 }
