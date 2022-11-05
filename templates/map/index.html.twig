@@ -22,6 +22,7 @@
             <tr class="align-middle">
                 <td>{{ map.name }}</td>
                 <td class="text-end">
+                    <a href="{{ path('app_map_show', {'id': map.id}) }}" class="text-decoration-none">Show</a>
                     <a href="{{ path('app_map_edit', {'id': map.id}) }}" class="text-decoration-none">Edit</a>
                 </td>
             </tr>

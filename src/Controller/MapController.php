@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Map;
 use App\Form\MapFormType;
 use App\Repository\MapRepository;
+use App\Repository\NameMapRepository;
+use App\Repository\NameRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,10 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MapController extends AbstractController
 {
-    public function __construct(EntityManagerInterface $em, MapRepository $mapRepository)
+    public function __construct(EntityManagerInterface $em, MapRepository $mapRepository, NameRepository $nameRepository, NameMapRepository $nameMapRepository)
     {
         $this->em = $em;
         $this->mapRepository = $mapRepository;
+        $this->nameRepository = $nameRepository;
+        $this->nameMapRepository = $nameMapRepository;
+
     }
     
     #[Route('/maps', name: 'app_map_index')]
@@ -70,6 +75,16 @@ class MapController extends AbstractController
 
         return $this->render('map/edit.html.twig', [
             'form' => $form->createView(),
+            'map' => $map,
+        ]);
+    }
+
+    #[Route('/map/{id}/show', name: 'app_map_show')]
+    public function show($id): Response
+    {
+        $map = $this->mapRepository->find($id);
+        
+        return $this->render('map/show.html.twig', [
             'map' => $map,
         ]);
     }

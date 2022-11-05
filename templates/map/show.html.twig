@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show {{ map.name }}{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">Show {{ map.name }}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">Names</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr class="align-middle">
+                <td>Add New Name</td>
+                <td class="text-end">
+                    -
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
