@@ -65,4 +65,5 @@ class NameMap
 
         return $this;
     }
+
 }
