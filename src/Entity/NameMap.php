@@ -18,7 +18,7 @@ class NameMap
     #[ORM\JoinColumn(nullable: false)]
     private ?Name $name = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Map::class, inversedBy: 'name_map')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Map $map = null;
 

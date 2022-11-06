@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MapRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MapRepository::class)]
@@ -17,6 +18,9 @@ class Map
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
 
     #[ORM\OneToMany(targetEntity: NameMap::class, mappedBy: 'map')]
     private Collection $name_map;
@@ -46,5 +50,17 @@ class Map
     public function getNameMap()
     {
         return $this->name_map;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
