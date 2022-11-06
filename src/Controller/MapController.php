@@ -91,4 +91,21 @@ class MapController extends AbstractController
             'name_maps' => $name_maps,
         ]);
     }
+
+    #[Route('/map/{id}/generate', name: 'app_map_generate')]
+    public function generate($id): Response
+    {
+        $map = $this->mapRepository->find($id);
+        $names = $map->getNameMap();
+        
+        $response =  $this->render('map/generate.html.twig', [
+            'map' => $map,
+            'names' => $names,
+        ]);
+
+        $response->headers->set('Content-Type', 'application/vnd.google-earth.kml+xml; charset=UTF-8');
+        $response->headers->set('Content-Disposition', 'attachment; filename="simple-maps_'.$id.'.kml"');
+
+        return $response;
+    }
 }
