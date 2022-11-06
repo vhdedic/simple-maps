@@ -13,6 +13,7 @@ class MapFormType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('description')
         ;
     }
 

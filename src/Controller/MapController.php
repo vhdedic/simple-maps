@@ -44,6 +44,7 @@ class MapController extends AbstractController
 
         if ($form->isSubmitted()) {
             $map->setName($form->get('name')->getData());
+            $map->setDescription($form->get('description')->getData());
 
             $this->em->persist($map);
             $this->em->flush();
@@ -66,6 +67,7 @@ class MapController extends AbstractController
 
         if ($form->isSubmitted()) {
             $map->setName($form->get('name')->getData());
+            $map->setDescription($form->get('description')->getData());
 
             $this->em->persist($map);
             $this->em->flush();
