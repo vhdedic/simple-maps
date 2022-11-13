@@ -100,7 +100,7 @@ class MapController extends AbstractController
         $map = $this->mapRepository->find($id);
         $names = $map->getNameMap();
         
-        $response =  $this->render('map/generate.html.twig', [
+        $response =  $this->render('map/generate.kml.twig', [
             'map' => $map,
             'names' => $names,
         ]);
