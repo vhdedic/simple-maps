@@ -21,7 +21,11 @@
             {% for name_map in name_maps %}
             <tr class="align-middle">
                 <td>{{ name_map.name }}</td>
-                <td>-</td>
+                <td class="text-end">
+                    <a href="{{ path('app_name_map_remove', {'mapId': map.id, 'nameMapId': name_map.id}) }}" class="text-decoration-none">
+                        Remove
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
