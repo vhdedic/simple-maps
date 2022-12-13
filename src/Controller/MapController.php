@@ -21,7 +21,6 @@ class MapController extends AbstractController
         $this->mapRepository = $mapRepository;
         $this->nameRepository = $nameRepository;
         $this->nameMapRepository = $nameMapRepository;
-
     }
     
     #[Route('/maps', name: 'app_map_index')]
@@ -109,5 +108,20 @@ class MapController extends AbstractController
         $response->headers->set('Content-Disposition', 'attachment; filename="simple-maps_'.$id.'.kml"');
 
         return $response;
+    }
+
+    #[Route('/map/{id}/delete', name: 'app_map_delete')]
+    public function delete($id): Response
+    {
+        $map =  $this->mapRepository->find($id);
+                
+        $this->em->remove($map);
+        $this->em->flush();
+
+        $maps = $this->mapRepository->findAll();
+        
+        return $this->render('map/index.html.twig', [
+            'maps' => $maps,
+        ]);
     }
 }

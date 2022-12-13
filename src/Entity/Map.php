@@ -22,7 +22,7 @@ class Map
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(targetEntity: NameMap::class, mappedBy: 'map')]
+    #[ORM\OneToMany(targetEntity: NameMap::class, mappedBy: 'map', cascade: ['persist'], orphanRemoval: true)]
     private Collection $name_map;
 
     public function __construct()
