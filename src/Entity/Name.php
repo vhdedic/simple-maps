@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NameRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: NameRepository::class)]
@@ -21,6 +23,14 @@ class Name
 
     #[ORM\Column]
     private ?string $latitude = null;
+
+    #[ORM\OneToMany(targetEntity: NameMap::class, mappedBy: 'name', cascade: ['persist'], orphanRemoval: true)]
+    private Collection $name_map;
+
+    public function __construct()
+    {
+        $this->name_map = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +71,11 @@ class Name
         $this->latitude = $latitude;
 
         return $this;
+    }
+
+    public function getNameMap()
+    {
+        return $this->name_map;
     }
 
     public function __toString() {

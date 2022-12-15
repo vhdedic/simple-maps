@@ -77,4 +77,19 @@ class NameController extends AbstractController
             'name' => $name,
         ]);
     }
+
+    #[Route('/name/{id}/delete', name: 'app_name_delete')]
+    public function delete($id): Response
+    {
+        $name =  $this->nameRepository->find($id);
+                
+        $this->em->remove($name);
+        $this->em->flush();
+
+        $names = $this->nameRepository->findAll();
+        
+        return $this->render('name/index.html.twig', [
+            'names' => $names,
+        ]);
+    }
 }
