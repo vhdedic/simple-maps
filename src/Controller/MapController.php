@@ -41,7 +41,7 @@ class MapController extends AbstractController
         $form = $this->createForm(MapFormType::class, $map);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $map->setName($form->get('name')->getData());
             $map->setDescription($form->get('description')->getData());
 
@@ -64,7 +64,7 @@ class MapController extends AbstractController
         $form = $this->createForm(MapFormType::class, $map);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $map->setName($form->get('name')->getData());
             $map->setDescription($form->get('description')->getData());
 
