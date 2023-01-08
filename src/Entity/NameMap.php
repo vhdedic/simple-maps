@@ -5,8 +5,11 @@ namespace App\Entity;
 use App\Repository\NameMapRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: NameMapRepository::class)]
+#[UniqueConstraint(name: "name_map", columns: ['name_id', 'map_id'])]
 class NameMap
 {
     #[ORM\Id]

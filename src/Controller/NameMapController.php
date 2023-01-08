@@ -32,7 +32,7 @@ class NameMapController extends AbstractController
         $form = $this->createForm(NameMapFormType::class, $name);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $name->setName($form->get('name')->getData());
             $name->setMap($map);
             $name->setDescription($form->get('description')->getData());
